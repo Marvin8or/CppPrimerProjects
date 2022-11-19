@@ -8,9 +8,22 @@ using namespace std;
 
 int main()
 {
-    Book LittleRedRidingHood = Book("Book1", "123-456-789", 29);
-    Library* myLibrary = new Library("path", "name");
-    cout << myLibrary->get_database_name() << myLibrary->get_database_path();
+    Book LittleRedRidingHood = Book("Little Red Riding Hood", "123-456-789", 29);
+    Book PeterPan = Book("Peter Pan", "123-456-780", 39);
+    Book LittlePrince = Book("Little Prince", "123-456-791", 15.99);
+    string path = "C:\\Users\\Gabriel\\Documents\\Projects\\CppPrimerProjects\\BookManager";
+    string name = "test.txt";
+    Library* myLibrary = new Library(name, path);
+    myLibrary->add(LittleRedRidingHood);
+    myLibrary->add(PeterPan);
+    myLibrary->add(LittlePrince);
+    auto lib_buffer = myLibrary->get_buffer();
+    for (auto i = lib_buffer.begin(); i != lib_buffer.end(); i++)
+    {
+        cout << *i << endl;
+    }
+
+    myLibrary->write();
     //cout << "LittleRedRidingHood"; //write to file
 
     /*string file_name = "demo.txt";

@@ -15,9 +15,9 @@ namespace LibraryTests
 		{
 			string db_name = "LibraryDB.txt";
 			string db_path = "C:\\Users\\Gabriel\\Documents\\Projects\\CPPPrimerProjects\\BookManager";
-			Library* library1 = new Library(db_name);
+			/*Library* library1 = new Library(db_name);
 			Assert::AreEqual(db_name, library1->get_name());
-			Assert::AreEqual(db_path, library1->get_path());
+			Assert::AreEqual(db_path, library1->get_path());*/
 
 
 			Library* library2 = new Library(db_name, db_path);
@@ -25,14 +25,14 @@ namespace LibraryTests
 			Assert::AreEqual(db_path, library2->get_path());
 		}
 
-		TEST_METHOD(TestInvalidLibraryNameCtor1)
+		/*TEST_METHOD(TestInvalidLibraryNameCtor1)
 		{
 			auto testcase1 = [] {Library Library(""); };
 			Assert::ExpectException<invalid_argument>(testcase1);
 
 			auto testcase2 = [] {Library Library(" "); };
 			Assert::ExpectException<invalid_argument>(testcase2);
-		}
+		}*/
 
 		TEST_METHOD(TestInvalidLibraryNameCtor2)
 		{
@@ -52,15 +52,15 @@ namespace LibraryTests
 			Assert::ExpectException<invalid_argument>(testcase2);
 		}
 
-		TEST_METHOD(TestInvalidFullLibraryPath)
+		/*TEST_METHOD(TestInvalidFullLibraryPath)
 		{
 			string db_name = "LibraryDB.txt";
 			string db_path = "C:\\Users\\Gabriel\\Documents\\Projects\\CPPPrimerProjects\\BookManager";
 			string full_path = db_name + "\\";
 			full_path += db_path;
 			Library* library1 = new Library(db_name, db_path);
-			//Assert::AreEqual(full_path, library1->get_full_path());
+			Assert::AreEqual(full_path, library1->get_full_path());
 
-		}
+		}*/
 	};
 }
