@@ -24,24 +24,6 @@ int main()
     }
 
     myLibrary->write();
-    //cout << "LittleRedRidingHood"; //write to file
-
-    /*string file_name = "demo.txt";
-    ifstream file_in(file_name, ios::in);
-    ofstream file_out(file_name, ios::out);
-   
-
-    string demo = "Some stupid string";
-    file_out << demo;
-    file_out.close();
-
-    string contents;
-    while (getline(file_in, contents))
-    {   
-        cout << contents;
-    }
-
-    file_in.close();*/
 
     return 0;
 }
