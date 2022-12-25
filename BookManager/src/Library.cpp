@@ -50,7 +50,7 @@ void Library::add(Book book)
 
     string book_info;
     book_info += book.get_name() + ";";
-    book_info += book.get_isbn() + ";";
+    book_info += book.get_isbn().isbn + ";";
     book_info += to_string(book.get_price());
     this->book_buffer.push_back(book_info);
 }
