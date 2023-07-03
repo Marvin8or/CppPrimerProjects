@@ -2,6 +2,7 @@
 #include "Library.hpp"
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 Library::Library(string name, string path)
 {
@@ -48,14 +49,15 @@ void Library::set_path(string new_path)
 void Library::add(Book book)
 {
 
-    string book_info;
-    book_info += book.get_name() + ";";
-    book_info += book.get_isbn().isbn + ";";
-    book_info += to_string(book.get_price());
-    this->book_buffer.push_back(book_info);
+    auto it = std::find(this->book_buffer.begin(), this->book_buffer.end(), book);
+    if (it != this->book_buffer.end())
+    {
+        *it.copies_sold++;
+    }
+        this->book_buffer.push_back(book);
 }
 
-vector<string> Library::get_buffer()
+vector<Book> Library::get_buffer()
 {
     return this->book_buffer;
 }
@@ -64,9 +66,9 @@ void Library::write()
 {
     ofstream output_file(this->get_path());
     auto _buffer = this->get_buffer();
-    for (auto i = _buffer.begin(); i != _buffer.end(); i++)
+    for (const Book& book : _buffer)
     {
-        output_file << *i << endl;
+        output_file << book. << endl;
     }
     output_file.close();
 
@@ -80,7 +82,7 @@ bool Library::is_file_exist(const string file_name)
     return exists;
 }
 
-vector<string> Library::read()
+vector<Book> Library::read()
 {
     
     string path = this->get_path();

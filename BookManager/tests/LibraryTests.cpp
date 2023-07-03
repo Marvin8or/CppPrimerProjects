@@ -45,15 +45,11 @@ namespace LibraryTests
 
 		TEST_METHOD(TestLibraryBuffer)
 		{
-			Book book_list[] = { Book("Little Red Riding Hood", "123-456-789", 29),
-								 Book("Peter Pan", "123-456-780", 39),
-								 Book("Little Prince", "123-456-791", 15.99),
-								 Book("Oz", "123-456-800", 23.15) };
-
-			string book_infos[] = { "Little Red Riding Hood;123-456-789;29.000000",
-									"Peter Pan;123-456-780;39.000000",
-									"Little Prince;123-456-791;15.990000",
-									"Oz;123-456-800;23.150000" };
+			vector<Book> book_list = { Book("To Kill a Mockingbird", "Harper Lee", "0061120081", 9.99),
+								 Book("Pride and Prejudice", "Jane Austen", "0141439501", 12.99),
+								 Book("The Great Gatsby", "F.Scott Fitzgerald", "0743273567", 7.89),
+								 Book("One Hundred Years of Solitude", "Gabriel García Márquez", "0060531045", 10.78),
+								 Book("Moby-Dick", "Herman Melville", "0679601755", 9.99) };
 
 			string db_name = "TestLibrary.txt";
 			string db_path = "C:\\Users\\Gabriel\\Documents\\Projects\\CppPrimerProjects\\BookManager\\tests";
@@ -64,47 +60,42 @@ namespace LibraryTests
 				library->add(book_list[i]);
 			}
 			auto lib_buffer = library->get_buffer();
-			int indx = 0;
-			for (auto i = lib_buffer.begin(); i != lib_buffer.end(); i++)
+			for (std::vector<Book>::size_type i = 0; i < book_list.size(); ++i)
 			{
-				Assert::AreEqual(book_infos[indx], *i);
-				indx++;
+				Assert::AreEqual(book_list[i], lib_buffer[i]);
 			}
 		}
 
 		TEST_METHOD(TestCorrectDatabaseContent)
 		{
-			Book book_list[] = { Book("Little Red Riding Hood", "123-456-789", 29),
-					 Book("Peter Pan", "123-456-780", 39),
-					 Book("Little Prince", "123-456-791", 15.99),
-					 Book("Oz", "123-456-800", 23.15) };
+			vector<Book> book_list = { Book("To Kill a Mockingbird", "Harper Lee", "0061120081", 9.99),
+								 Book("Pride and Prejudice", "Jane Austen", "0141439501", 12.99),
+								 Book("The Great Gatsby", "F.Scott Fitzgerald", "0743273567", 7.89),
+								 Book("One Hundred Years of Solitude", "Gabriel García Márquez", "0060531045", 10.78),
+								 Book("Moby-Dick", "Herman Melville", "0679601755", 9.99) };
 
-			string book_infos[] = { "Little Red Riding Hood;123-456-789;29.000000",
-									"Peter Pan;123-456-780;39.000000",
-									"Little Prince;123-456-791;15.990000",
-									"Oz;123-456-800;23.150000" };
+			string book_infos[] = { "To Kill a Mockingbird;Harper Lee;0061120081;9.990000;1",
+									"Pride and Prejudice;Jane Austen;0141439501;12.990000;1",
+									"The Great Gatsby;F.Scott Fitzgerald;0743273567;7.890000;1",
+									"One Hundred Years of Solitude;Gabriel García Márquez;0060531045;10.780000;1",
+									"Moby-Dick;Herman Melville;0679601755;9.99;1" };
 
-			string db_name = "TestLibrary.txt";
+			string db_name = "library_database.txt";
 			string db_path = "C:\\Users\\Gabriel\\Documents\\Projects\\CppPrimerProjects\\BookManager\\tests";
 
 			Library* library = new Library(db_name, db_path);
-			for (int i = 0; i < 4; i++)
+			for (vector<Book>::size_type i = 0; i < book_list.size(); ++i)
 			{
 				library->add(book_list[i]);
 			}
 
 			library->write();
-
-			vector<string> library_content = library->read();
-			int indx = 0;
-			for (auto i = library_content.begin(); i != library_content.end(); i++)
+			vector<Book> library_content = library->read();
+			for (vector<Book>::size_type i = 0; i < book_list.size(); ++i)
 			{
-				Assert::AreEqual(book_infos[indx], *i);
-				indx++;
+				Assert::AreEqual(library_content[i], book_list[i]);
+			
 			}
-
-
 		}
-
 	};
 }

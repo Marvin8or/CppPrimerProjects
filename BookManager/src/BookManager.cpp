@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 
-    Book* book = new Book("Little Red Riding Hood", "0389756288", 29.99);
+    Book* book = new Book("Little Red Riding Hood", "Charles Perault", "0389756288", 29.99);
 
     std::map<string, bool> expected_all_valid{
         {"0471958697", true},

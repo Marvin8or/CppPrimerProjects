@@ -4,9 +4,10 @@
 #include "Book.hpp"
 #include <string>
 
-Book::Book(string name, string isbn, double price)
+Book::Book(string name, string author, string isbn, double price)
 {
     set_name(name);
+    set_author(author);
     set_isbn(isbn);
     set_price(price);
 }
@@ -21,6 +22,19 @@ void Book::set_name(string new_name)
     else
     {
         this->name = new_name;
+    }
+}
+
+void Book::set_author(string new_author)
+{
+    // TODO replace return value and logging
+    if (new_author.empty() || new_author == " ")
+    { 
+        throw invalid_argument("Provided authors name is empty...");
+    }
+    else
+    {
+        this->author = new_author;
     }
 }
 void Book::set_isbn(string new_isbn)
@@ -90,7 +104,13 @@ void Book::set_price(double new_price)
     }
 }
 
+bool Book::operator==(const Book& book)
+{
+    return (this->name == book.name && this->isbn.isbn == book.isbn.isbn && this->price == book.price);
+}
+
 string Book::get_name() { return this->name; }
+string Book::get_author() { return this->author; }
 ISBN Book::get_isbn() { return this->isbn; }
 double Book::get_price() { return this->price; }
 
