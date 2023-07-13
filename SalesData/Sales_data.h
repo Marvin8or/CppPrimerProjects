@@ -16,7 +16,7 @@ public:
 	std::string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data& rhs);
 private:
-	double avg_price() const;
+	inline double avg_price() const;
 	std::string bookNo;
 	double price_per_unit = 10.00;
 	unsigned units_sold = 0;

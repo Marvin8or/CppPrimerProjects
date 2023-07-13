@@ -1,42 +1,43 @@
 #include <iostream>
 #include "Person.h"
 #include "Sales_data.h"
+#include "Screen.h"
 using namespace std;
 
 int main()
 {
 	//Usage of Sales_data class
 
-	Sales_data total(std::cin);
-	
-	if(total.isbn().length() != 0)
-	{
-		while(true)
-		{
-			Sales_data trans(std::cin);
-			if(trans.isbn().length() != 0)
-			{
-				if (total.isbn() == trans.isbn())
-				{
-					std::cout << "Combine total + trans..." << std::endl;
-					total.combine(trans);
-					print(cout, total);
-				}
-				else
-				{
-					std::cout << "Printing total..." << std::endl;
-					print(cout, total) << endl;
-					total = trans;
-				}
-			}
-			else
-			{
-				std::cout << "Breaking..." << std::endl;
-				break;
-			}
+	//Sales_data total(std::cin);
+	//
+	//if(total.isbn().length() != 0)
+	//{
+	//	while(true)
+	//	{
+	//		Sales_data trans(std::cin);
+	//		if(trans.isbn().length() != 0)
+	//		{
+	//			if (total.isbn() == trans.isbn())
+	//			{
+	//				std::cout << "Combine total + trans..." << std::endl;
+	//				total.combine(trans);
+	//				print(cout, total);
+	//			}
+	//			else
+	//			{
+	//				std::cout << "Printing total..." << std::endl;
+	//				print(cout, total) << endl;
+	//				total = trans;
+	//			}
+	//		}
+	//		else
+	//		{
+	//			std::cout << "Breaking..." << std::endl;
+	//			break;
+	//		}
 
-		}
-	}
+	//	}
+	//}
 
 /*	Sales_data total;
 
@@ -79,5 +80,13 @@ int main()
 
 	//read(std::cin, *p);
 	//print(std::cout, *p);
+
+	Screen s1(100, 100, "x");
+	writeContents(std::cin, s1);
+	readContents(std::cout, s1) << std::endl;
+	Screen s2 = s1;
+	writeContents(std::cin, s2);
+	readContents(std::cout, s1) << std::endl;
+	readContents(std::cout, s2) << std::endl;
 	return 0;
 }
