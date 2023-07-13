@@ -8,6 +8,7 @@ private:
 	std::string name;
 	std::string address;
 public:
+	Person()=default;
 	Person(std::string name, std::string address);
 	std::string getName() const;
 	std::string getAddress();
