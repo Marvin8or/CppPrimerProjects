@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <iostream>
+#include "Window_mgr.h"
+
 
 /*
  * The Screen a User can see
@@ -10,6 +12,7 @@ class Screen
 	
 	friend std::ostream& readContents(std::ostream& os, Screen& sc);
 	friend std::istream& writeContents(std::istream& is, Screen& sc);
+	friend void Window_mgr::clear(Window_mgr::ScreenIndex);
 
 public:
 	typedef std::string::size_type position;
@@ -23,12 +26,12 @@ public:
 	};
 	char get() { return contents[cursor]; }
 	inline char get(position r, position c) const;
-	Screen move(position r, position c);
+	Screen& move(position r, position c);
 
-	Screen set(char ch);
+	Screen& set(char ch);
 	Screen& set(position, position, char);
 
-	Screen display(std::ostream& os);
+	Screen& display(std::ostream& os);
 	const Screen& display(std::ostream& os) const;
 
 private:

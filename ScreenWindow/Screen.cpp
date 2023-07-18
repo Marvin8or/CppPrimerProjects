@@ -6,14 +6,14 @@ char Screen::get(position r, position c) const
 	return contents[cursor + c];
 }
 
-Screen Screen::move(position r, position c)
+Screen& Screen::move(position r, position c)
 {
 	position row = r * width;
 	cursor = row + c;
 	return *this;
 }
 
-Screen Screen::set(char ch)
+Screen& Screen::set(char ch)
 {
 	contents[cursor] = ch;
 	return *this;
@@ -25,7 +25,7 @@ Screen& Screen::set(position r, position c, char ch)
 	return *this;
 }
 
-Screen Screen::display(std::ostream& os)
+Screen& Screen::display(std::ostream& os)
 {
 	do_display(os);
 	return *this;
