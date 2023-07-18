@@ -16,18 +16,41 @@ public:
 	// using position = std::string::size_type;
 	Screen() = default;
 	Screen(position ht, position wt) : height(ht), width(wt), contents(" ") {};
-	Screen(position ht, position wt, std::string c) : height(ht), width(wt), contents(c) {};
+	Screen(position ht, position wt, char c) : height(ht), width(wt)
+	{
+		std::string intialized_contents(height * width, c);
+		contents = intialized_contents;
+	};
 	char get() { return contents[cursor]; }
 	inline char get(position r, position c) const;
-	Screen& move(position r, position c);
+	Screen move(position r, position c);
+
+	Screen set(char ch);
+	Screen& set(position, position, char);
+
+	Screen display(std::ostream& os);
+	const Screen& display(std::ostream& os) const;
+
 private:
 	
 	position cursor = 0;
 	position height = 0, width = 0;
 	std::string contents;
-	Screen& setContents(const std::string& newContents);
+
+	// Function to do the work of displaying a Screen
+	void do_display(std::ostream& os) const
+	{
+		for(int r=0; r<height; r++)
+		{
+			for(int c=0; c<width; c++)
+			{
+				os << contents[r * width + c];
+			}
+			os << std::endl;
+		}
+	}
 };
 
 std::istream& writeContents(std::istream& is, Screen& sc);
-std::ostream& readContents(std::ostream& os, Screen& sc);
+
 

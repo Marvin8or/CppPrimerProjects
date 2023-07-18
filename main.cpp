@@ -81,12 +81,10 @@ int main()
 	//read(std::cin, *p);
 	//print(std::cout, *p);
 
-	Screen s1(100, 100, "x");
-	writeContents(std::cin, s1);
-	readContents(std::cout, s1) << std::endl;
-	Screen s2 = s1;
-	writeContents(std::cin, s2);
-	readContents(std::cout, s1) << std::endl;
-	readContents(std::cout, s2) << std::endl;
+	Screen s1(10, 30, 'X');
+	s1.move(4, 0).set('#').display(std::cout);
+	std::cout << "\n";
+	s1.display(std::cout);
+	std::cout << "\n";
 	return 0;
 }
