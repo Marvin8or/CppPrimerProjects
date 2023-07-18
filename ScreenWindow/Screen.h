@@ -12,7 +12,7 @@ class Screen
 	
 	friend std::ostream& readContents(std::ostream& os, Screen& sc);
 	friend std::istream& writeContents(std::istream& is, Screen& sc);
-	friend void Window_mgr::clear(Window_mgr::ScreenIndex);
+	friend class Window_mgr;
 
 public:
 	typedef std::string::size_type position;
@@ -33,6 +33,8 @@ public:
 
 	Screen& display(std::ostream& os);
 	const Screen& display(std::ostream& os) const;
+
+	position size() const;
 
 private:
 	

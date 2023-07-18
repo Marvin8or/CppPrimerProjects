@@ -8,3 +8,10 @@ void Window_mgr::clear(ScreenIndex si)
 	// reset the contents of that Screen to all blanks
 	s.contents = std::string(s.height * s.width, ' ');
 }
+
+Window_mgr::ScreenIndex Window_mgr::addScreen(const Screen& s)
+{
+	screens_.push_back(s);
+	return screens_.size() - 1;
+}
+

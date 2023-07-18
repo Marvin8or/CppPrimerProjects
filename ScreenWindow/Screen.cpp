@@ -45,3 +45,9 @@ std::istream& writeContents(std::istream& is, Screen& sc)
 	sc.contents = newContents;
 	return is;
 }
+
+Screen::position Screen::size() const
+{
+	return height * width;
+}
+

@@ -9,4 +9,6 @@ private:
 public:
 	using ScreenIndex = std::vector<Screen>::size_type;
 	void clear(ScreenIndex);
+
+	ScreenIndex addScreen(const Screen&);
 };
