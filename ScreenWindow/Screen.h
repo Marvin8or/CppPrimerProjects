@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include "Window_mgr.h"
+//#include "Window_mgr.h"
 
 
 /*

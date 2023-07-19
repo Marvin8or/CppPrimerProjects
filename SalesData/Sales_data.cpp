@@ -2,10 +2,10 @@
 #include <iostream>
 #include <string>
 
-Sales_data::Sales_data()
+/*Sales_data::Sales_data(std)
 {
 	bookNo = "";
-}
+}*/
 
 
 Sales_data::Sales_data(std::istream& is)

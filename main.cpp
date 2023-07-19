@@ -81,10 +81,12 @@ int main()
 	//read(std::cin, *p);
 	//print(std::cout, *p);
 
-	Screen s1(10, 30, 'X');
-	s1.move(4, 0).set('#').display(std::cout);
-	std::cout << "\n";
-	s1.display(std::cout);
-	std::cout << "\n";
+	//Screen s1(10, 30, 'X');
+	//s1.move(4, 0).set('#').display(std::cout);
+	//std::cout << "\n";
+	//s1.display(std::cout);
+	//std::cout << "\n";
+
+	//Sales_data s();
 	return 0;
 }
