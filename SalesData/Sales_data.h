@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 
 
 class Sales_data
@@ -10,10 +11,28 @@ friend std::ostream& print(std::ostream& os, const Sales_data& sd);
 public:
 	//Constructors
 	// Defines the default constructor as well as one that takes a string argument
-	Sales_data(std::string s = ""):bookNo(s){};
-	Sales_data(const std::string& s) : bookNo(s) {}
-	Sales_data(const std::string& s, unsigned n, double p) : bookNo(s), units_sold(n), revenue(p*n) {}
-	Sales_data(std::istream& is=std::cin);
+	Sales_data(const std::string& s, unsigned cnt, double price) : bookNo(s), units_sold(cnt), revenue(price*cnt)
+	{
+		std::cout << "Executing constructor 'Sales_data(const std::string& s=" << bookNo << ", unsigned cnt=" <<
+			units_sold << ", double price=" << revenue << ")" << std::endl;
+	}
+
+	// Remaining constructors all delegate to another constructor
+	Sales_data() : Sales_data("", 0, 0)
+	{
+		std::cout << "Executing constructor Sales_data()" << std::endl;
+	}
+
+	Sales_data(const std::string& s) : Sales_data(s, 0, 0)
+	{
+		std::cout << "Executing constructor Sales_data(const std::string& s=" << s << ")" << std::endl;
+
+	}
+	Sales_data(std::istream& is) : Sales_data()
+	{
+		std::cout << "Executing constructor Sales_data(std::istream& is)" << std::endl;
+		read(is, *this);
+	}
 	std::string isbn() const { return bookNo; }
 	Sales_data& combine(const Sales_data& rhs);
 private:

@@ -87,6 +87,6 @@ int main()
 	//s1.display(std::cout);
 	//std::cout << "\n";
 
-	//Sales_data s();
+	Sales_data s;
 	return 0;
 }
