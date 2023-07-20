@@ -86,7 +86,23 @@ int main()
 	//std::cout << "\n";
 	//s1.display(std::cout);
 	//std::cout << "\n";
+	std::string null_book = "9-999-9999-9";
+	Sales_data item;
+	item.combine(null_book);
 
-	Sales_data s;
+	/*
+	* error: requires two user - defined conversions
+	* (1) convert "9-999-9999-9" to string
+	* (2) convert that temporary string to Sales_data
+	Sales_data item1;
+	item1.combine("9-999-9999-9"); 
+	*/
+
+	//// ok: explicit conversion to std::string, implicit conversion to Sales_data
+	//Sales_data item1;
+	//item1.combine(std::string("9-999-9999-9"));
+
+	//// ok: implicit conversion to std::string, explicit conversion to Sales_data
+	//item1.combine(Sales_data("9-999-9999-9"));
 	return 0;
 }
