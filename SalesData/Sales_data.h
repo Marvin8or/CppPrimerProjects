@@ -23,12 +23,12 @@ public:
 		std::cout << "Executing constructor Sales_data()" << std::endl;
 	}
 
-	Sales_data(const std::string& s) : Sales_data(s, 0, 0)
+	explicit Sales_data(const std::string& s) : Sales_data(s, 0, 0)
 	{
 		std::cout << "Executing constructor Sales_data(const std::string& s=" << s << ")" << std::endl;
 
 	}
-	Sales_data(std::istream& is) : Sales_data()
+	explicit Sales_data(std::istream& is) : Sales_data()
 	{
 		std::cout << "Executing constructor Sales_data(std::istream& is)" << std::endl;
 		read(is, *this);
