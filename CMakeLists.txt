@@ -8,13 +8,15 @@ add_subdirectory(Person)
 add_subdirectory(SalesData)
 add_subdirectory(ScreenWindow)
 add_subdirectory(Chapter_7)
+add_subdirectory(Debug)
 
 add_executable(Primer  main.cpp)
-target_link_libraries(Primer PUBLIC Person SalesData ScreenWindow Chapter_7)
+target_link_libraries(Primer PUBLIC Person SalesData ScreenWindow Chapter_7 Debug)
 target_include_directories(Primer PUBLIC
                        	  "${PROJECT_BINARY_DIR}"
                           "${PROJECT_SOURCE_DIR}/Person"
 			  "${PROJECT_SOURCE_DIR}/SalesData"
 			  "${PROJECT_SOURCE_DIR}/ScreenWindow"
 			  "${PROJECT_SOURCE_DIR}/Chapter_7"
+			  "${PROJECT_SOURCE_DIR}/Debug"
                           )

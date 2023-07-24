@@ -2,6 +2,7 @@
 #include "Person.h"
 #include "Sales_data.h"
 #include "Screen.h"
+#include "Debug.h"
 using namespace std;
 
 int main()
@@ -86,16 +87,16 @@ int main()
 	//std::cout << "\n";
 	//s1.display(std::cout);
 	//std::cout << "\n";
-	std::string null_book = "9-999-9999-9";
-	Sales_data item;
-	item.combine(null_book);
+	//std::string null_book = "9-999-9999-9";
+	//Sales_data item;
+	//item.combine(null_book);
 
 	/*
 	* error: requires two user - defined conversions
 	* (1) convert "9-999-9999-9" to string
 	* (2) convert that temporary string to Sales_data
 	Sales_data item1;
-	item1.combine("9-999-9999-9"); 
+	item1.combine("9-999-9999-9");
 	*/
 
 	//// ok: explicit conversion to std::string, implicit conversion to Sales_data
@@ -104,5 +105,14 @@ int main()
 
 	//// ok: implicit conversion to std::string, explicit conversion to Sales_data
 	//item1.combine(Sales_data("9-999-9999-9"));
+
+	constexpr Debug io_sub(false, true, false); //IO Debugging
+	if (io_sub.any())
+		std::cerr << "IO Error occured!!" << std::endl;
+
+	constexpr Debug prod(false); //No debugging during production
+	if (prod.any())
+		std::cerr << "IO Error occured!!" << std::endl;
+
 	return 0;
 }
