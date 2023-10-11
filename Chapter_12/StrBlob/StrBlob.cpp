@@ -13,7 +13,6 @@ std::string& StrBlob::front()
 	check(0, "front on empty StrBlob");
 	return data->front();
 }
-
 std::string& StrBlob::back()
 {
 	check(0, "back on empty StrBlob");
