@@ -28,7 +28,11 @@ void TextQuery::parseLine(std::string& line, int& line_indx) const
 		else
 		{
 			word = word.substr(0, end + 1);
-			(*map_str_set_ptr)[word].insert(line_indx);
+			
+			auto& lines = (*map_str_set_ptr)[word];
+			if (!lines)
+				lines.reset(new std::set<int>);
+			lines->insert(line_indx);
 			(*map_str_int_ptr)[word]++;
 		}
 		
@@ -39,7 +43,7 @@ void TextQuery::parseLine(std::string& line, int& line_indx) const
 TextQuery::TextQuery(std::ifstream& infile)
 {
 	text_ptr = std::make_shared<std::vector<std::string>>();
-	map_str_set_ptr = std::make_shared<std::map<std::string, std::set<int>>>();
+	map_str_set_ptr = std::make_shared<std::map<std::string, std::shared_ptr<std::set<int>>>>();
 	map_str_int_ptr = std::make_shared<std::map<std::string, int>>();
 
 	std::istringstream ss;
